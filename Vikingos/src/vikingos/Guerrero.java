@@ -5,22 +5,21 @@ public class Guerrero {
 	private double ataque=50;
 	private double defensa=10;
 	private double vida=100;
-	private int vecesCalmarse;
 	private EstadoGuerrero estado;
 	
 	public Guerrero(){
 		this.estado = new Normal();
 	}
-
-	public void estadoNormal() {
-		estado = new Normal();
+	public void atacar(double danio){
+		this.estado = this.estado.atacar(danio);
+		this.defensa *= this.estado.getDefensaState();
+		this.ataque *= this.estado.getAtaqueState();
 	}
-	public void estadoBerserker() {
-		estado = new Berserker();
+	public void calmarse(){
+		
+		this.estado = this.estado.calmarse();
 	}
-	public void estadoMeditacion() {
-		estado = new Meditacion();
-	}
+	
 	public double getAtaque() {
 		return ataque;
 	}
@@ -45,14 +44,6 @@ public class Guerrero {
 		this.vida = vida;
 	}
 
-	public int getVecesCalmarse() {
-		return vecesCalmarse;
-	}
-
-	public void setVecesCalmarse(int vecesCalmarse) {
-		this.vecesCalmarse = vecesCalmarse;
-	}
-
 	public EstadoGuerrero getEstado() {
 		return estado;
 	}
@@ -61,11 +52,5 @@ public class Guerrero {
 		this.estado = estado;
 	}
 
-	public void getEstadoGuerrero(){
-
-	}
-	public EstadoGuerrero atacar(){
-		this.estado = this.estado.atacar();
-	}
 
 }
